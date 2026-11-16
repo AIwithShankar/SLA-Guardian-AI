@@ -1,6 +1,8 @@
 # SLA Guardian AI
 
-Lightweight scaffolding for a machine learning system that predicts customer support ticket SLA breaches.
+Phase 2 project foundation for a B2B customer-support SLA breach prediction application.
+This phase intentionally contains no database, authentication, CSV ingestion, SLA
+calculation, model training, or prediction implementation.
 
 ## Project structure
 
@@ -8,27 +10,28 @@ Lightweight scaffolding for a machine learning system that predicts customer sup
 SLA-Guardian-AI/
 ├── backend/
 │   ├── app/
-│   │   ├── api/routes/
-│   │   ├── core/
-│   │   ├── db/
-│   │   ├── ml/
+│   │   ├── api/
+│   │   ├── repositories/
 │   │   ├── schemas/
 │   │   ├── services/
 │   │   └── main.py
+│   ├── tests/
 │   ├── requirements.txt
 │   └── .env.example
 ├── frontend/
 │   ├── src/
+│   │   ├── api/
 │   │   ├── components/
-│   │   ├── pages/
-│   │   └── services/
+│   │   ├── hooks/
+│   │   └── pages/
 │   ├── package.json
 │   └── .env.example
+├── ml/{notebooks,artifacts}/
+├── supabase/migrations/
+├── docs/{PRD.md,architecture.md,data-contract.md}
 ├── .env.example
 └── README.md
 ```
-
-The backend currently runs in mock mode when Supabase credentials and a trained model are unavailable. The ML, database, and service boundaries are ready for later implementation.
 
 ## Prerequisites
 
@@ -41,16 +44,22 @@ The backend currently runs in mock mode when Supabase credentials and a trained 
 From the project root:
 
 ```powershell
-python -m venv .venv
+py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r backend\requirements.txt
 Copy-Item .env.example .env
-python -m uvicorn app.main:app --app-dir backend --reload
+python -m uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
 ```
 
 The API is available at `http://127.0.0.1:8000`. OpenAPI docs are at `http://127.0.0.1:8000/docs`.
 
 If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process Bypass` in that terminal and activate again.
+
+Run the smoke test from the project root:
+
+```powershell
+python -m pytest backend\tests -q
+```
 
 ## Run the frontend
 
@@ -62,12 +71,12 @@ npm install
 npm run dev
 ```
 
-Open the URL printed by Vite, usually `http://localhost:5173`. The dashboard calls `GET /api/v1/health` and displays mock ticket data from the backend.
+Open the URL printed by Vite, usually `http://localhost:5173`. The dashboard calls
+`GET http://127.0.0.1:8000/health` and displays the connection status.
 
 ## API endpoints
 
-- `GET /api/v1/health` - service health and mock-mode status
-- `GET /api/v1/tickets` - mock ticket list
-- `POST /api/v1/predictions` - placeholder prediction response
+- `GET /health` - foundation service health
 
-No API keys or credentials are committed. Copy `.env.example` and fill in Supabase values only when database integration is ready.
+No API keys or credentials are committed. Database and model configuration will be
+added in later phases.

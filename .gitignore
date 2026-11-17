@@ -25,3 +25,8 @@ npm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# Phase 3 data and generated artifacts
+data/processed/
+data/raw/
+data/artifacts/

@@ -1,8 +1,9 @@
 # SLA Guardian AI
 
 Phase 2 project foundation for a B2B customer-support SLA breach prediction application.
-This phase intentionally contains no database, authentication, CSV ingestion, SLA
-calculation, model training, or prediction implementation.
+Phase 3 now contains provisional research documentation and Colab dataset artifacts.
+No production model, database workflow, authentication, or prediction service is
+implemented.
 
 ## Project structure
 
@@ -27,8 +28,10 @@ SLA-Guardian-AI/
 │   ├── package.json
 │   └── .env.example
 ├── ml/{notebooks,artifacts}/
+├── notebooks/
+├── data/processed/ (ignored provisional research artifacts)
 ├── supabase/migrations/
-├── docs/{PRD.md,architecture.md,data-contract.md}
+├── docs/{PRD.md,architecture.md,data-contract.md,phase3/}
 ├── .env.example
 └── README.md
 ```
@@ -80,3 +83,23 @@ Open the URL printed by Vite, usually `http://localhost:5173`. The dashboard cal
 
 No API keys or credentials are committed. Database and model configuration will be
 added in later phases.
+
+## Phase 3 progress
+
+The Colab notebook at
+[notebooks/03_dataset_discovery_eda.ipynb](./notebooks/03_dataset_discovery_eda.ipynb)
+and the provisional manifest at
+`data/processed/dataset_manifest.json` document dataset discovery, conservative
+cohort construction, provisional SLA labels, chronological splits, and
+outcome-maturity audits.
+
+Read the Phase 3 documentation:
+
+- [Data quality report](./docs/phase3/data_quality_report.md)
+- [Feature dictionary](./docs/phase3/feature_dictionary.md)
+- [SLA label definition](./docs/phase3/sla_label_definition.md)
+- [Split strategy](./docs/phase3/split_strategy.md)
+
+These are research assumptions only. No model was trained, no model results are
+claimed, and `data/raw/`, `data/processed/`, and `data/artifacts/` are excluded
+from Git.

@@ -45,3 +45,12 @@ ml/artifacts/*.pkl
 # Local test coverage
 .coverage
 htmlcov/
+
+# Local test credentials
+*.env.local
+*.secrets.json
+backend/.env.test
+
+# Python tooling
+.ruff_cache/
+.tox/

@@ -30,3 +30,18 @@ Thumbs.db
 data/processed/
 data/raw/
 data/artifacts/
+# Phase 5A - ML environment
+backend/.venv-ml/
+backend/.venv/
+.venv-ml/
+
+# Trained model binaries
+ml/artifacts/*.joblib
+ml/artifacts/*.pkl
+
+# Colab and Jupyter temporary files
+.ipynb_checkpoints/
+
+# Local test coverage
+.coverage
+htmlcov/

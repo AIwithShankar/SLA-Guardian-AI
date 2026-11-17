@@ -1,0 +1,7 @@
+# Install only in a dedicated Python 3.13-compatible environment.
+# These versions are the research artifact's recorded runtime dependencies.
+numpy==2.4.6
+pandas==2.2.3
+scikit-learn==1.7.2
+lightgbm==4.6.0
+joblib==1.5.2

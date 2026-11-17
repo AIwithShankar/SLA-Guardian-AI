@@ -1,0 +1,48 @@
+{
+  "contract_version": "phase4_research_v1",
+  "model_version": "phase4_research_v1",
+  "required_features": [
+    "priority",
+    "category",
+    "ticket_age_hours",
+    "remaining_sla_hours",
+    "created_hour",
+    "created_weekday"
+  ],
+  "categorical_features": [
+    "priority",
+    "category"
+  ],
+  "numeric_features": [
+    "ticket_age_hours",
+    "remaining_sla_hours",
+    "created_hour",
+    "created_weekday"
+  ],
+  "numeric_ranges": {
+    "ticket_age_hours": [
+      0.0,
+      72.0
+    ],
+    "remaining_sla_hours": [
+      0.0,
+      72.0
+    ],
+    "created_hour": [
+      0.0,
+      23.0
+    ],
+    "created_weekday": [
+      0.0,
+      6.0
+    ]
+  },
+  "categorical_value_policy": "Historical source priority strings; unknown values ignored by OneHotEncoder",
+  "feature_adapter": "Call ml.feature_contract.validate_features before predict_proba",
+  "output": {
+    "breach_probability": "float in [0, 1], positive class = 1",
+    "risk_band": "low p<0.30; medium 0.30<=p<0.70; high p>=0.70"
+  },
+  "alert_threshold": 0.7,
+  "research_only": true
+}

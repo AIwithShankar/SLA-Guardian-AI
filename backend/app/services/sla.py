@@ -31,6 +31,7 @@ class TicketRecord:
     created_at: datetime
     status: str
     resolved_at: datetime | None = None
+    sla_policy_id: str | None = None
     sla_deadline: datetime | None = None
 
 

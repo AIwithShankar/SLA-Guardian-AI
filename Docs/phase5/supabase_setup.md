@@ -1,8 +1,8 @@
 # Phase 5B.1 Supabase setup
 
-Phase 5B.1 adds the database and authentication foundation only. The public
-prediction route remains intentionally disabled until authenticated route
-integration is implemented and tested.
+Phase 5B.1 provides the database and authentication foundation. Phase 5B.2
+adds the authenticated prediction route; it remains research-only and
+nonpersistent.
 
 ## Required user actions
 
@@ -16,7 +16,9 @@ integration is implemented and tested.
    clients have no profile write privileges. The profile
    `user_id` must equal the Auth user UUID. Do not accept organization or role
    values from a client.
-5. Add test SLA policies and tickets with UTC timestamps.
+5. Add test SLA policies and tickets with UTC timestamps. Each prediction
+fixture ticket must have a valid `sla_policy_id` foreign key and a stored
+future `sla_deadline`; the API rejects tickets without both values.
 6. Keep the Supabase anon key in backend environment configuration only for now.
    Never place a service-role key in React or commit either key.
 

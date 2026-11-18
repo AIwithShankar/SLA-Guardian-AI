@@ -111,12 +111,11 @@ assessment, exact six-feature construction, research-model inference, risk bands
 and Manager/Admin tenant authorization boundaries. The service is nonpersistent
 and research-only.
 
-The PRD-defined `POST /api/v1/tickets/{id}/predict` endpoint is intentionally not
-exposed yet. Supabase JWT verification, tenant-scoped ticket persistence, and
-role/profile lookup are not implemented, so adding a public route would require
-an insecure authentication bypass. Phase 5B therefore stops at dependency-
-injected services and mocked repository tests. No predictions are persisted and
-no alerts or external notifications are generated.
+The PRD-defined `POST /api/v1/tickets/{id}/predict` endpoint is exposed behind
+Supabase bearer-token authentication and tenant-scoped ticket access. Only
+Manager and Admin profiles may request a prediction refresh. The endpoint is
+research-only and nonpersistent; no alerts or external notifications are
+generated.
 
 ## Phase 5B.1 status
 
@@ -125,9 +124,10 @@ The Supabase foundation migration is at
 organizations, trusted user profiles, versioned SLA policies, tenant-scoped
 tickets, indexes, foreign keys, and Row Level Security policies.
 
-The backend now contains mocked-dependency Supabase Auth/profile verification
-and a tenant-bound ticket repository. See
+The backend contains Supabase Auth/profile verification, a tenant-bound ticket
+repository, and the authenticated prediction route. See
 [Supabase setup](./Docs/phase5/supabase_setup.md) for the required dedicated
-test project setup and cloud integration procedure. No Supabase credentials
-were added, no cloud integration was executed, and the prediction route remains
-disabled until authenticated route integration is implemented.
+test project setup and cloud integration procedure.No Supabase credentials are committed. Manual Supabase cloud integration
+verified authenticated Manager A prediction, cross-tenant isolation
+(Admin B: HTTP 404), and unauthorized Agent A prediction (HTTP 403).
+The model remains research-only and predictions are not persisted.

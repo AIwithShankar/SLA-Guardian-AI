@@ -54,7 +54,7 @@ class SupabaseTicketRepository:
             f"?id=eq.{encoded_ticket_id}"
             f"&organization_id=eq.{encoded_org_id}"
             "&select=id,organization_id,priority,category,status,created_at,"
-            "resolved_at,sla_deadline",
+            "resolved_at,sla_policy_id,sla_deadline",
             headers={
                 "apikey": self._anon_key,
                 "Authorization": f"Bearer {self._access_token}",
@@ -75,6 +75,7 @@ class SupabaseTicketRepository:
                 created_at=_parse_timestamp(record["created_at"]),
                 status=record["status"],
                 resolved_at=_parse_optional_timestamp(record.get("resolved_at")),
+                sla_policy_id=record.get("sla_policy_id"),
                 sla_deadline=_parse_optional_timestamp(record.get("sla_deadline")),
             )
         except (IndexError, KeyError, TypeError, ValueError) as error:

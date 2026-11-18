@@ -84,6 +84,7 @@ def test_ticket_repository_binds_query_to_authenticated_organization():
                         "status": "open",
                         "created_at": "2026-11-17T10:00:00Z",
                         "resolved_at": None,
+                        "sla_policy_id": "policy-1",
                         "sla_deadline": "2026-11-18T10:00:00Z",
                     }
                 ],

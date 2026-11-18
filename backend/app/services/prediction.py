@@ -83,9 +83,16 @@ def build_features(
 
 
 class PredictionService:
-    def __init__(self, repository: TicketRepository, predictor: Predictor) -> None:
+    def __init__(
+        self,
+        repository: TicketRepository,
+        predictor: Predictor,
+        *,
+        require_assigned_sla: bool = False,
+    ) -> None:
         self._repository = repository
         self._predictor = predictor
+        self._require_assigned_sla = require_assigned_sla
 
     def predict(
         self,
@@ -104,6 +111,20 @@ class PredictionService:
             raise PredictionAuthorizationError("ticket belongs to another organization")
 
         timestamp = at.astimezone(timezone.utc)
+        if self._require_assigned_sla and (
+            not ticket.sla_policy_id or ticket.sla_deadline is None
+        ):
+            return PredictionResponse(
+                ticket_id=ticket.ticket_id,
+                model_version=MODEL_VERSION,
+                prediction_timestamp=timestamp,
+                sla_deadline=ticket.sla_deadline,
+                breach_probability=None,
+                risk_band=None,
+                prediction_status="ineligible:ticket has no assigned SLA policy and deadline",
+                research_only=True,
+                sla_breached=False,
+            )
         assessment = assess_sla(ticket, timestamp)
         base = {
             "ticket_id": ticket.ticket_id,

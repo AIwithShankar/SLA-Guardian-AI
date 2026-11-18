@@ -175,7 +175,7 @@ def test_repeated_deterministic_inference():
     assert first.breach_probability == second.breach_probability == 0.42
 
 
-def test_prediction_route_is_not_public_without_authentication():
+def test_prediction_route_requires_authentication():
     response = TestClient(app).post("/api/v1/tickets/T-1/predict")
 
-    assert response.status_code == 404
+    assert response.status_code == 401

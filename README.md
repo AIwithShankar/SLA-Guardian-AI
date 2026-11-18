@@ -179,7 +179,7 @@ For earlier project details, refer to the existing PRD, research notebooks, and 
 ## Screenshots
 
 ### Login
-![Login page](Docs/screenshots/01-login.png)
+![Login page](D:\Desktop\SLA-Guardian-AI\Docs\screenshots\01-login.png)
 
 ### Overview
 ![Overview dashboard](Docs/screenshots/02-overview.png)
@@ -203,7 +203,7 @@ Screenshots should use the **latest deployed interface** and a non-sensitive dem
 
 ## Demo / interview walkthrough
 
-See [Two-minute demo and Q&A](docs/PHASE8E_DEMO_GUIDE.md) for a non-technical explanation, a live walkthrough, talking points on ML evaluation, and clear answers about research limitations.
+See [Two-minute demo and Q&A](Docs/PHASE8E_DEMO_GUIDE.md) for a non-technical explanation, a live walkthrough, talking points on ML evaluation, and clear answers about research limitations.
 
 ---
 

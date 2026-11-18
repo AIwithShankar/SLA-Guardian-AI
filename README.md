@@ -178,7 +178,19 @@ For earlier project details, refer to the existing PRD, research notebooks, and 
 
 ## Screenshots
 
-Screenshots should use the **latest deployed interface** and a non-sensitive demo account. See [Screenshot checklist](docs/PHASE8E_SCREENSHOTS.md) for the recommended four captures: login, overview, tickets, and predictions. Avoid displaying real customer data, passwords, access tokens, or browser Developer Tools authorization headers.
+### Login
+![Login page](Docs/screenshots/01-login.png)
+
+### Overview
+![Overview dashboard](Docs/screenshots/02-overview.png)
+
+### Ticket Management
+![Ticket dashboard](Docs/screenshots/03-tickets.png)
+
+### SLA Risk Prediction
+![Prediction results](Docs/screenshots/04-prediction.png)
+
+Screenshots should use the **latest deployed interface** and a non-sensitive demo account. See [Screenshot checklist](Docs/PHASE8E_SCREENSHOTS.md) for the recommended four captures: login, overview, tickets, and predictions. Avoid displaying real customer data, passwords, access tokens, or browser Developer Tools authorization headers.
 
 ## Security and limitations
 

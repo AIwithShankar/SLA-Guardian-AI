@@ -10,7 +10,7 @@ from app.services.prediction import PredictionService
 from app.services.sla import TicketRecord
 
 UTC = timezone.utc
-NOW = datetime(2026, 11, 17, 12, 0, tzinfo=UTC)
+NOW = datetime.now(UTC)
 
 
 class Predictor:
